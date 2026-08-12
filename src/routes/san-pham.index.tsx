@@ -3,7 +3,7 @@ import { useMemo, useState } from "react";
 import { categories, formatVnd, models, type CategoryId } from "@/data/products";
 import { Empty, ProductImage } from "@/components/ui-bits";
 
-export const Route = createFileRoute("/san-pham")({
+export const Route = createFileRoute("/san-pham/")({
   head: () => ({
     meta: [
       { title: "Danh mục sản phẩm LG Subscribe | Sales Training" },
