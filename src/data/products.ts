@@ -97,31 +97,82 @@ export type Model = {
 
 /**
  * ============================================================
- *  DANH SÁCH MODEL — CHƯA CÓ DỮ LIỆU
- *  Dán bảng giá / danh sách model vào mảng dưới đây.
+ *  DANH SÁCH MODEL — dựng từ bảng giá Kiosk MB tháng 8
+ *  + Scheme thưởng theo Model + quà tặng / voucher.
  * ============================================================
- *
- * Mẫu một model:
- *
- * {
- *   code: "GN-D332PS",
- *   name: "Tủ lạnh LG Inverter 335L",
- *   category: "ref",
- *   type: "Ngăn đá trên",
- *   capacity: "335 L",
- *   specs: [{ label: "Dung tích", value: "335 L" }],
- *   imageUrl: null,                // dán URL ảnh chính thức lg.com/vn
- *   lgUrl: "https://www.lg.com/vn/...",
- *   features: [{ icon: "❄️", title: "DoorCooling+", description: "Làm lạnh nhanh cửa tủ" }],
- *   ata: ["..."],
- *   customerBenefits: ["..."],
- *   vsConventional: ["..."],
- *   consultation: { targetCustomers: [], painPoints: [], questions: [], scripts: [], objections: [], closings: [] },
- *   price: { productPrice: null, monthly: null, yearly: null, term: null, careService: null, extendedWarranty: null, total: null, note: null },
- *   promotion: { title: null, giftName: null, giftValue: null, period: null, conditions: null },
- * }
  */
-export const models: Model[] = [];
+
+const typeLabels: Record<string, string> = {
+  OLED: "TV OLED evo",
+  QNED: "TV QNED",
+  UHD: "TV NANO / UHD",
+  MRGB: "TV MicroRGB",
+  "B/F": "Tủ lạnh ngăn đá dưới",
+  "F/D": "Tủ lạnh 4 cửa (French Door)",
+  SXS: "Tủ lạnh Side by Side",
+  "T/F": "Tủ lạnh ngăn đá trên",
+  DW: "Máy rửa chén",
+  "RAC BD": "Máy lạnh Inverter",
+  "Air purifier": "Máy lọc không khí",
+  "Air Care": "Air Care",
+  Styler: "Tủ chăm sóc quần áo Styler",
+  Dryer: "Máy sấy quần áo",
+  "F/L": "Máy giặt lồng ngang",
+  "T/L": "Máy giặt lồng đứng",
+  WashTower: "Tháp giặt sấy WashTower",
+};
+
+const screenSize = (code: string) => {
+  const m = code.match(/^(\d{2,3})/) ?? code.match(/OLED(\d{2,3})/);
+  return m ? `${m[1]} inch` : null;
+};
+
+export const models: Model[] = priceRows.map((row) => {
+  const typeName = typeLabels[row.type] ?? row.type;
+  const size = row.category === "tv" ? screenSize(row.code) : null;
+  return {
+    code: row.code,
+    name: `LG ${typeName}${size ? ` ${size}` : ""} ${row.code}`,
+    category: row.category,
+    type: typeName,
+    capacity: size,
+    specs: [
+      { label: "Model code", value: row.code },
+      { label: "Model suffix", value: row.suffix },
+      { label: "Nhóm hàng", value: row.group },
+      { label: "Loại", value: typeName },
+    ],
+    imageUrl: null,
+    lgUrl: `https://www.lg.com/vn/search?search=${encodeURIComponent(row.code)}`,
+    features: [],
+    ata: [],
+    customerBenefits: [],
+    vsConventional: [],
+    consultation: null,
+    price: {
+      productPrice: row.mrp,
+      monthly: row.m36,
+      yearly: null,
+      term: row.m36 ? "12 / 24 / 36 tháng" : null,
+      careService: null,
+      extendedWarranty: null,
+      total: row.oneTime,
+      note:
+        row.discount != null
+          ? `Giá One Time + Care ưu đãi ${row.discount}% so với giá niêm yết.`
+          : null,
+    },
+    promotion: row.gift
+      ? {
+          title: "Bundle promotion AUG + SEP",
+          giftName: `${row.gift.name} (${row.gift.model})`,
+          giftValue: row.gift.value,
+          period: "Tháng 8 + Tháng 9",
+          conditions: row.gift.ew ? `Kèm bảo hành mở rộng ${row.gift.ew}.` : null,
+        }
+      : null,
+  };
+});
 
 export const getModel = (code: string) =>
   models.find((m) => m.code.toLowerCase() === code.toLowerCase());
