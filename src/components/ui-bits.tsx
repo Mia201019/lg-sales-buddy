@@ -7,7 +7,7 @@ export function Section({
   tone = "plain",
 }: {
   title: string;
-  subtitle?: string;
+  subtitle?: string | undefined;
   children: ReactNode;
   tone?: "plain" | "brand" | "highlight";
 }) {

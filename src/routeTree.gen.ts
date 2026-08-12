@@ -10,12 +10,18 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as SoSanhRouteImport } from './routes/so-sanh'
 import { Route as SanPhamIndexRouteImport } from './routes/san-pham.index'
 import { Route as SanPhamModelRouteImport } from './routes/san-pham.$model'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SoSanhRoute = SoSanhRouteImport.update({
+  id: '/so-sanh',
+  path: '/so-sanh',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SanPhamIndexRoute = SanPhamIndexRouteImport.update({
@@ -31,30 +37,34 @@ const SanPhamModelRoute = SanPhamModelRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/so-sanh': typeof SoSanhRoute
   '/san-pham/$model': typeof SanPhamModelRoute
   '/san-pham/': typeof SanPhamIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/so-sanh': typeof SoSanhRoute
   '/san-pham/$model': typeof SanPhamModelRoute
   '/san-pham': typeof SanPhamIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/so-sanh': typeof SoSanhRoute
   '/san-pham/$model': typeof SanPhamModelRoute
   '/san-pham/': typeof SanPhamIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/san-pham/$model' | '/san-pham/'
+  fullPaths: '/' | '/so-sanh' | '/san-pham/$model' | '/san-pham/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/san-pham/$model' | '/san-pham'
-  id: '__root__' | '/' | '/san-pham/$model' | '/san-pham/'
+  to: '/' | '/so-sanh' | '/san-pham/$model' | '/san-pham'
+  id: '__root__' | '/' | '/so-sanh' | '/san-pham/$model' | '/san-pham/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  SoSanhRoute: typeof SoSanhRoute
   SanPhamModelRoute: typeof SanPhamModelRoute
   SanPhamIndexRoute: typeof SanPhamIndexRoute
 }
@@ -66,6 +76,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/so-sanh': {
+      id: '/so-sanh'
+      path: '/so-sanh'
+      fullPath: '/so-sanh'
+      preLoaderRoute: typeof SoSanhRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/san-pham/': {
@@ -87,6 +104,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  SoSanhRoute: SoSanhRoute,
   SanPhamModelRoute: SanPhamModelRoute,
   SanPhamIndexRoute: SanPhamIndexRoute,
 }
