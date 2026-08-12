@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as DaoTaoRouteImport } from './routes/dao-tao'
+import { Route as GiaKhuyenMaiRouteImport } from './routes/gia-khuyen-mai'
 import { Route as SoSanhRouteImport } from './routes/so-sanh'
 import { Route as SanPhamIndexRouteImport } from './routes/san-pham.index'
 import { Route as SanPhamModelRouteImport } from './routes/san-pham.$model'
@@ -23,6 +24,11 @@ const IndexRoute = IndexRouteImport.update({
 const DaoTaoRoute = DaoTaoRouteImport.update({
   id: '/dao-tao',
   path: '/dao-tao',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GiaKhuyenMaiRoute = GiaKhuyenMaiRouteImport.update({
+  id: '/gia-khuyen-mai',
+  path: '/gia-khuyen-mai',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SoSanhRoute = SoSanhRouteImport.update({
@@ -44,6 +50,7 @@ const SanPhamModelRoute = SanPhamModelRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/dao-tao': typeof DaoTaoRoute
+  '/gia-khuyen-mai': typeof GiaKhuyenMaiRoute
   '/so-sanh': typeof SoSanhRoute
   '/san-pham/$model': typeof SanPhamModelRoute
   '/san-pham/': typeof SanPhamIndexRoute
@@ -51,6 +58,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/dao-tao': typeof DaoTaoRoute
+  '/gia-khuyen-mai': typeof GiaKhuyenMaiRoute
   '/so-sanh': typeof SoSanhRoute
   '/san-pham/$model': typeof SanPhamModelRoute
   '/san-pham': typeof SanPhamIndexRoute
@@ -59,19 +67,33 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/dao-tao': typeof DaoTaoRoute
+  '/gia-khuyen-mai': typeof GiaKhuyenMaiRoute
   '/so-sanh': typeof SoSanhRoute
   '/san-pham/$model': typeof SanPhamModelRoute
   '/san-pham/': typeof SanPhamIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/dao-tao' | '/so-sanh' | '/san-pham/$model' | '/san-pham/'
+  fullPaths:
+    | '/'
+    | '/dao-tao'
+    | '/gia-khuyen-mai'
+    | '/so-sanh'
+    | '/san-pham/$model'
+    | '/san-pham/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/dao-tao' | '/so-sanh' | '/san-pham/$model' | '/san-pham'
+  to:
+    | '/'
+    | '/dao-tao'
+    | '/gia-khuyen-mai'
+    | '/so-sanh'
+    | '/san-pham/$model'
+    | '/san-pham'
   id:
     | '__root__'
     | '/'
     | '/dao-tao'
+    | '/gia-khuyen-mai'
     | '/so-sanh'
     | '/san-pham/$model'
     | '/san-pham/'
@@ -80,6 +102,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   DaoTaoRoute: typeof DaoTaoRoute
+  GiaKhuyenMaiRoute: typeof GiaKhuyenMaiRoute
   SoSanhRoute: typeof SoSanhRoute
   SanPhamModelRoute: typeof SanPhamModelRoute
   SanPhamIndexRoute: typeof SanPhamIndexRoute
@@ -99,6 +122,13 @@ declare module '@tanstack/react-router' {
       path: '/dao-tao'
       fullPath: '/dao-tao'
       preLoaderRoute: typeof DaoTaoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/gia-khuyen-mai': {
+      id: '/gia-khuyen-mai'
+      path: '/gia-khuyen-mai'
+      fullPath: '/gia-khuyen-mai'
+      preLoaderRoute: typeof GiaKhuyenMaiRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/so-sanh': {
@@ -128,6 +158,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   DaoTaoRoute: DaoTaoRoute,
+  GiaKhuyenMaiRoute: GiaKhuyenMaiRoute,
   SoSanhRoute: SoSanhRoute,
   SanPhamModelRoute: SanPhamModelRoute,
   SanPhamIndexRoute: SanPhamIndexRoute,
