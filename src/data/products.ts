@@ -14,6 +14,8 @@
 
 export type CategoryId = "ref" | "wm" | "rac" | "aircare" | "tv" | "styler" | "other";
 
+import { priceRows } from "./catalog";
+
 export type Category = {
   id: CategoryId;
   code: string;
