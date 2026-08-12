@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as SanPhamIndexRouteImport } from './routes/san-pham.index'
+import { Route as SanPhamModelRouteImport } from './routes/san-pham.$model'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -22,30 +23,39 @@ const SanPhamIndexRoute = SanPhamIndexRouteImport.update({
   path: '/san-pham/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SanPhamModelRoute = SanPhamModelRouteImport.update({
+  id: '/san-pham/$model',
+  path: '/san-pham/$model',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/san-pham/$model': typeof SanPhamModelRoute
   '/san-pham/': typeof SanPhamIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/san-pham/$model': typeof SanPhamModelRoute
   '/san-pham': typeof SanPhamIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/san-pham/$model': typeof SanPhamModelRoute
   '/san-pham/': typeof SanPhamIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/san-pham/'
+  fullPaths: '/' | '/san-pham/$model' | '/san-pham/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/san-pham'
-  id: '__root__' | '/' | '/san-pham/'
+  to: '/' | '/san-pham/$model' | '/san-pham'
+  id: '__root__' | '/' | '/san-pham/$model' | '/san-pham/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  SanPhamModelRoute: typeof SanPhamModelRoute
   SanPhamIndexRoute: typeof SanPhamIndexRoute
 }
 
@@ -65,11 +75,19 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SanPhamIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/san-pham/$model': {
+      id: '/san-pham/$model'
+      path: '/san-pham/$model'
+      fullPath: '/san-pham/$model'
+      preLoaderRoute: typeof SanPhamModelRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  SanPhamModelRoute: SanPhamModelRoute,
   SanPhamIndexRoute: SanPhamIndexRoute,
 }
 export const routeTree = rootRouteImport

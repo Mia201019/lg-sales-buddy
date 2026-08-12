@@ -6,6 +6,7 @@ import {
   getCategory,
   getModel,
   subscribeBenefits,
+  type Model,
 } from "@/data/products";
 import { Bullets, Empty, ProductImage, Section } from "@/components/ui-bits";
 
@@ -37,7 +38,7 @@ export const Route = createFileRoute("/san-pham/$model")({
 });
 
 function ModelPage() {
-  const { model } = Route.useLoaderData();
+  const { model } = Route.useLoaderData() as { model: Model };
   const category = getCategory(model.category);
   const price = model.price;
   const promo = model.promotion;
