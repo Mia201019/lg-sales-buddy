@@ -6,6 +6,7 @@ const nav = [
   { to: "/dao-tao", label: "Đào tạo Sales" },
   { to: "/gia-khuyen-mai", label: "Giá & Khuyến mãi" },
   { to: "/so-sanh", label: "So sánh" },
+  { to: "/tinh-thuong", label: "Tính thưởng" },
 ] as const;
 
 export function SiteHeader() {
