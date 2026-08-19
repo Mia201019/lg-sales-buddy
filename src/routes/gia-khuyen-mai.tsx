@@ -163,7 +163,7 @@ function PricePage() {
                 <tr className="bg-surface text-left">
                   <th className="p-3">Model</th>
                   <th className="p-3">Danh mục</th>
-                  <th className="p-3">Giá niêm yết</th>
+                  <th className="p-3">Giá trả 1 lần</th>
                   <th className="p-3">Voucher</th>
                 </tr>
               </thead>
@@ -181,7 +181,7 @@ function PricePage() {
                       <div className="text-xs text-muted-foreground">{r.type}</div>
                     </td>
                     <td className="p-3 text-xs">{catLabel(r.category)}</td>
-                    <td className="p-3">{formatVnd(r.mrp) ?? "—"}</td>
+                    <td className="p-3">{formatVnd(r.oneTime) ?? "—"}</td>
                     <td className="p-3 font-semibold">{formatVnd(r.mbVoucher) ?? "—"}</td>
                   </tr>
                 ))}
