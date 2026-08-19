@@ -166,7 +166,7 @@ export const models: Model[] = priceRows.map((row) => {
     },
     promotion: row.gift
       ? {
-          title: "Bundle promotion AUG + SEP",
+          title: "Khuyến mãi trọn gói Tháng 8 + Tháng 9",
           giftName: `${row.gift.name} (${row.gift.model})`,
           giftValue: row.gift.value,
           period: "Tháng 8 + Tháng 9",
