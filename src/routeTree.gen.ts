@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as CatalogueRouteImport } from './routes/catalogue'
 import { Route as DaoTaoRouteImport } from './routes/dao-tao'
 import { Route as GiaKhuyenMaiRouteImport } from './routes/gia-khuyen-mai'
 import { Route as SoSanhRouteImport } from './routes/so-sanh'
@@ -20,6 +21,11 @@ import { Route as SanPhamModelRouteImport } from './routes/san-pham.$model'
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CatalogueRoute = CatalogueRouteImport.update({
+  id: '/catalogue',
+  path: '/catalogue',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DaoTaoRoute = DaoTaoRouteImport.update({
@@ -55,6 +61,7 @@ const SanPhamModelRoute = SanPhamModelRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/catalogue': typeof CatalogueRoute
   '/dao-tao': typeof DaoTaoRoute
   '/gia-khuyen-mai': typeof GiaKhuyenMaiRoute
   '/so-sanh': typeof SoSanhRoute
@@ -64,6 +71,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/catalogue': typeof CatalogueRoute
   '/dao-tao': typeof DaoTaoRoute
   '/gia-khuyen-mai': typeof GiaKhuyenMaiRoute
   '/so-sanh': typeof SoSanhRoute
@@ -74,6 +82,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/catalogue': typeof CatalogueRoute
   '/dao-tao': typeof DaoTaoRoute
   '/gia-khuyen-mai': typeof GiaKhuyenMaiRoute
   '/so-sanh': typeof SoSanhRoute
@@ -85,6 +94,7 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/catalogue'
     | '/dao-tao'
     | '/gia-khuyen-mai'
     | '/so-sanh'
@@ -94,6 +104,7 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/catalogue'
     | '/dao-tao'
     | '/gia-khuyen-mai'
     | '/so-sanh'
@@ -103,6 +114,7 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/catalogue'
     | '/dao-tao'
     | '/gia-khuyen-mai'
     | '/so-sanh'
@@ -113,6 +125,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  CatalogueRoute: typeof CatalogueRoute
   DaoTaoRoute: typeof DaoTaoRoute
   GiaKhuyenMaiRoute: typeof GiaKhuyenMaiRoute
   SoSanhRoute: typeof SoSanhRoute
@@ -128,6 +141,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/catalogue': {
+      id: '/catalogue'
+      path: '/catalogue'
+      fullPath: '/catalogue'
+      preLoaderRoute: typeof CatalogueRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/dao-tao': {
@@ -177,6 +197,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  CatalogueRoute: CatalogueRoute,
   DaoTaoRoute: DaoTaoRoute,
   GiaKhuyenMaiRoute: GiaKhuyenMaiRoute,
   SoSanhRoute: SoSanhRoute,
