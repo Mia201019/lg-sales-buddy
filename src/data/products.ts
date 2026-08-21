@@ -15,6 +15,7 @@
 export type CategoryId = "ref" | "wm" | "rac" | "aircare" | "tv" | "styler" | "other";
 
 import { priceRows } from "./catalog";
+import { getSnapcard } from "./snapcards";
 
 export type Category = {
   id: CategoryId;
