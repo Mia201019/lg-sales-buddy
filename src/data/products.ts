@@ -135,6 +135,7 @@ const screenSize = (code: string) => {
 export const models: Model[] = priceRows.map((row) => {
   const typeName = typeLabels[row.type] ?? row.type;
   const size = row.category === "tv" ? screenSize(row.code) : null;
+  const snap = getSnapcard(row.code);
   return {
     code: row.code,
     name: `LG ${typeName}${size ? ` ${size}` : ""} ${row.code}`,
