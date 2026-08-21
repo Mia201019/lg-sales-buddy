@@ -15,6 +15,7 @@
 export type CategoryId = "ref" | "wm" | "rac" | "aircare" | "tv" | "styler" | "other";
 
 import { priceRows } from "./catalog";
+import { getSnapcard } from "./snapcards";
 
 export type Category = {
   id: CategoryId;
@@ -95,6 +96,8 @@ export type Model = {
   consultation: Consultation | null;
   price: Price | null;
   promotion: Promotion | null;
+  /** Ảnh snapcard LG (GTM Training) áp dụng cho model này */
+  snapcard: { title: string; images: string[] } | null;
 };
 
 /**
@@ -132,6 +135,7 @@ const screenSize = (code: string) => {
 export const models: Model[] = priceRows.map((row) => {
   const typeName = typeLabels[row.type] ?? row.type;
   const size = row.category === "tv" ? screenSize(row.code) : null;
+  const snap = getSnapcard(row.code);
   return {
     code: row.code,
     name: `LG ${typeName}${size ? ` ${size}` : ""} ${row.code}`,
@@ -144,10 +148,10 @@ export const models: Model[] = priceRows.map((row) => {
       { label: "Nhóm hàng", value: row.group },
       { label: "Loại", value: typeName },
     ],
-    imageUrl: null,
+    imageUrl: snap?.images[0] ?? null,
     lgUrl: `https://www.lg.com/vn/search?search=${encodeURIComponent(row.code)}`,
     features: [],
-    ata: [],
+    ata: snap?.ata ?? [],
     customerBenefits: [],
     vsConventional: [],
     consultation: null,
@@ -173,6 +177,7 @@ export const models: Model[] = priceRows.map((row) => {
           conditions: row.gift.ew ? `Kèm bảo hành mở rộng ${row.gift.ew}.` : null,
         }
       : null,
+    snapcard: snap ? { title: snap.title, images: snap.images } : null,
   };
 });
 
