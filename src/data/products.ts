@@ -96,6 +96,8 @@ export type Model = {
   consultation: Consultation | null;
   price: Price | null;
   promotion: Promotion | null;
+  /** Ảnh snapcard LG (GTM Training) áp dụng cho model này */
+  snapcard: { title: string; images: string[] } | null;
 };
 
 /**
