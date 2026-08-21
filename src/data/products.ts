@@ -177,6 +177,7 @@ export const models: Model[] = priceRows.map((row) => {
           conditions: row.gift.ew ? `Kèm bảo hành mở rộng ${row.gift.ew}.` : null,
         }
       : null,
+    snapcard: snap ? { title: snap.title, images: snap.images } : null,
   };
 });
 
