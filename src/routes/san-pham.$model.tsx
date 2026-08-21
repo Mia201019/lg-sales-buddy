@@ -101,11 +101,35 @@ function ModelPage() {
 
         <Section
           title="ATA — Điểm bán hàng cốt lõi"
-          subtitle="Sales cần thuộc lòng những ý này"
+          subtitle={
+            model.snapcard
+              ? `Nguồn: Snapcard LG GTM Training — ${model.snapcard.title}`
+              : "Sales cần thuộc lòng những ý này"
+          }
           tone="brand"
         >
           <Bullets items={model.ata} marker="★" />
         </Section>
+
+        {model.snapcard && (
+          <Section
+            title="Snapcard sản phẩm"
+            subtitle="Ảnh tài liệu chính thức — mở to để tư vấn trực tiếp cho khách"
+          >
+            <div className="grid gap-4">
+              {model.snapcard.images.map((src, i) => (
+                <a key={src} href={src} target="_blank" rel="noreferrer">
+                  <img
+                    src={src}
+                    alt={`Snapcard ${model.code} — trang ${i + 1}`}
+                    loading="lazy"
+                    className="w-full rounded-xl border border-border bg-surface"
+                  />
+                </a>
+              ))}
+            </div>
+          </Section>
+        )}
 
         <div className="grid gap-5 lg:grid-cols-2">
           <Section title="Lợi ích cho khách hàng">
