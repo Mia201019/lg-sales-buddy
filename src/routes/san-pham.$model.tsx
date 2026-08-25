@@ -11,6 +11,7 @@ import {
 import { Bullets, Empty, ProductImage, Section } from "@/components/ui-bits";
 
 export const Route = createFileRoute("/san-pham/$model")({
+  codeSplitGroupings: [["loader", "component"]],
   loader: ({ params }) => {
     const model = getModel(params.model);
     if (!model) throw notFound();
@@ -31,6 +32,8 @@ export const Route = createFileRoute("/san-pham/$model")({
         { name: "description", content: description },
         { property: "og:title", content: title },
         { property: "og:description", content: description },
+        { property: "og:type", content: "website" },
+        { name: "twitter:card", content: "summary_large_image" },
       ],
     };
   },
