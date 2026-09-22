@@ -957,7 +957,7 @@ export const kpiSep = {
 
 /** Hệ số hoàn thành theo % đạt Target */
 export const levelForAchievement = (pct: number) =>
-  kpiSep.levels.slice().reverse().find((l) => pct >= l.min) ?? kpiSep.levels[0];
+  kpiSep.levels.slice().reverse().find((l) => pct >= l.min) ?? kpiSep.levels[0]!;
 
 /** Thưởng doanh số = 5.000.000 x hệ số */
 export const salesIncentive = (revenue: number) => {
