@@ -911,7 +911,7 @@ export const modelIncentives: ModelIncentive[] = [
     "m36": 590000,
     "epc": 500000
   }
-]';
+];
 
 export const getModelIncentive = (code: string) =>
   modelIncentives.find((m) => m.code.toLowerCase() === code.toLowerCase());
