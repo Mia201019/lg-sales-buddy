@@ -926,6 +926,8 @@ export const kpiSep = {
   target: 200000000,
   /** Thưởng doanh số khi đạt 100% Target */
   baseIncentive: 5000000,
+  /** Trần thưởng doanh số (Target incentive) */
+  salesIncentiveCeiling: 9000000,
   /** Trần thưởng theo model / tháng */
   modelCeiling: 8500000,
   /** Trần tổng thưởng (doanh số + model) */
@@ -951,17 +953,18 @@ export const kpiSep = {
     { rank: "PC #2", amount: 1500000 },
   ],
   /** Điều kiện nhận thưởng xếp hạng */
-  rankCondition: 300000000,
-  rankConditionText: "Doanh số tháng 9 đạt tối thiểu 300.000.000 VNĐ",
+  rankCondition: 200000000,
+  rankConditionText: "Doanh số tháng 9 đạt tối thiểu 200.000.000 VNĐ",
 };
 
 /** Hệ số hoàn thành theo % đạt Target */
 export const levelForAchievement = (pct: number) =>
   kpiSep.levels.slice().reverse().find((l) => pct >= l.min) ?? kpiSep.levels[0]!;
 
-/** Thưởng doanh số = 5.000.000 x hệ số */
+/** Thưởng doanh số = 5.000.000 x hệ số, trần 9.000.000 */
 export const salesIncentive = (revenue: number) => {
   const pct = kpiSep.target ? (revenue / kpiSep.target) * 100 : 0;
   const level = levelForAchievement(pct);
-  return { pct, level, amount: Math.round(kpiSep.baseIncentive * level.factor) };
+  const raw = Math.round(kpiSep.baseIncentive * level.factor);
+  return { pct, level, raw, amount: Math.min(raw, kpiSep.salesIncentiveCeiling) };
 };
