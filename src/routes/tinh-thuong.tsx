@@ -364,8 +364,8 @@ function BonusPage() {
             <h3 className="font-extrabold">Trần thưởng tháng</h3>
             <ul className="mt-3 space-y-1 text-muted-foreground">
               <li>
-                Thưởng doanh số (Target):{" "}
-                <strong className="text-foreground">{formatVnd(kpiSep.baseIncentive)}</strong>
+                Thưởng doanh số (Target) — trần:{" "}
+                <strong className="text-foreground">{formatVnd(kpiSep.salesIncentiveCeiling)}</strong>
               </li>
               <li>
                 Thưởng theo model — trần:{" "}
