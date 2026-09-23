@@ -137,6 +137,60 @@ function BonusPage() {
         <Stat label="Tổng thưởng" value={formatVnd(total) ?? "—"} highlight />
       </div>
 
+      <div className="mt-4 grid gap-4 lg:grid-cols-3">
+        <div className="rounded-2xl border border-border p-4 text-sm">
+          <h3 className="font-extrabold">1. Thưởng theo model</h3>
+          <ul className="mt-2 space-y-1 text-muted-foreground">
+            <li>
+              Tổng thưởng model:{" "}
+              <strong className="text-foreground">{formatVnd(rawModelBonus)}</strong>
+            </li>
+            <li>
+              Trần thưởng model:{" "}
+              <strong className="text-foreground">{formatVnd(kpiSep.modelCeiling)}</strong>
+            </li>
+            <li>
+              Được nhận:{" "}
+              <strong className="text-brand">{formatVnd(modelBonus)}</strong>
+            </li>
+          </ul>
+        </div>
+        <div className="rounded-2xl border border-border p-4 text-sm">
+          <h3 className="font-extrabold">2. Thưởng doanh số (Target)</h3>
+          <ul className="mt-2 space-y-1 text-muted-foreground">
+            <li>
+              Target: <strong className="text-foreground">{formatVnd(kpiSep.target)}</strong> · đạt{" "}
+              <strong className="text-foreground">{sales.pct.toFixed(0)}%</strong>
+            </li>
+            <li>
+              {formatVnd(kpiSep.baseIncentive)} × hệ số {sales.level.factor} ={" "}
+              <strong className="text-foreground">{formatVnd(sales.raw)}</strong>
+            </li>
+            <li>
+              Trần: <strong className="text-foreground">{formatVnd(kpiSep.salesIncentiveCeiling)}</strong> · được
+              nhận: <strong className="text-brand">{formatVnd(sales.amount)}</strong>
+            </li>
+          </ul>
+        </div>
+        <div className="rounded-2xl border border-brand bg-brand/5 p-4 text-sm">
+          <h3 className="font-extrabold">3. Tổng thưởng</h3>
+          <ul className="mt-2 space-y-1 text-muted-foreground">
+            <li>
+              Model + doanh số:{" "}
+              <strong className="text-foreground">{formatVnd(modelBonus + sales.amount)}</strong>{" "}
+              (trần {formatVnd(kpiSep.totalIncentiveCeiling)})
+            </li>
+            <li>
+              Thưởng xếp hạng:{" "}
+              <strong className="text-foreground">{formatVnd(rankBonus)}</strong>
+            </li>
+            <li>
+              Tổng được nhận: <strong className="text-brand">{formatVnd(total)}</strong>
+            </li>
+          </ul>
+        </div>
+      </div>
+
       <div className="mt-4 rounded-2xl border border-border bg-surface p-4 text-sm">
         <div className="flex flex-wrap items-center gap-3">
           <span className="font-semibold">Hình thức thanh toán:</span>
