@@ -85,7 +85,7 @@ function PricePage() {
               <th className="p-3">Danh mục</th>
               <th className="p-3">Giá niêm yết</th>
               <th className="p-3">Khuyến mãi</th>
-              <th className="p-3">One Time + Care</th>
+              <th className="p-3">Giá trả 1 lần</th>
               <th className="p-3">12 tháng</th>
               <th className="p-3">24 tháng</th>
               <th className="p-3">36 tháng</th>
