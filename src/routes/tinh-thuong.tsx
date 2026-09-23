@@ -126,9 +126,13 @@ function BonusPage() {
           }
         />
         <Stat
-          label="Thưởng doanh số"
+          label={`Thưởng doanh số (trần ${formatVnd(kpiSep.salesIncentiveCeiling)})`}
           value={formatVnd(sales.amount) ?? "—"}
-          hint={`Đạt ${sales.pct.toFixed(0)}% Target · hệ số ${sales.level.factor}`}
+          hint={
+            sales.raw > kpiSep.salesIncentiveCeiling
+              ? `Đạt ${sales.pct.toFixed(0)}% Target · hệ số ${sales.level.factor} · thực tế ${formatVnd(sales.raw)} — đã áp trần`
+              : `Đạt ${sales.pct.toFixed(0)}% Target · hệ số ${sales.level.factor}`
+          }
         />
         <Stat label="Tổng thưởng" value={formatVnd(total) ?? "—"} highlight />
       </div>
