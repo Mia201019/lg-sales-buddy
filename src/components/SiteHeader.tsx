@@ -16,7 +16,7 @@ export function SiteHeader() {
   return (
     <header className="sticky top-0 z-50 border-b border-border bg-white/90 backdrop-blur-[10px]">
       <div className="mx-auto grid max-w-[1180px] grid-cols-[minmax(0,1fr)_auto] items-center gap-4 px-5 sm:flex sm:h-[76px] sm:justify-between sm:px-8 h-[68px]">
-        <Link to="/" aria-label="LG Subscribe" className="flex min-w-0 shrink-0 items-center">
+        <Link to="/san-pham" aria-label="LG Subscribe" className="flex min-w-0 shrink-0 items-center">
           <img
             src={`${import.meta.env.BASE_URL}lg-subscribe-logo.png`}
             alt="LG Subscribe"
