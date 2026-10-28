@@ -106,7 +106,7 @@ function BonusPage() {
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-10">
-      <h1 className="text-3xl font-black tracking-tight">
+      <h1 className="text-3xl font-bold tracking-tight">
         Tính thưởng nhân viên bán hàng — {kpiSep.month}
       </h1>
       <p className="mt-2 text-sm text-muted-foreground">
@@ -139,7 +139,7 @@ function BonusPage() {
 
       <div className="mt-4 grid gap-4 lg:grid-cols-3">
         <div className="rounded-2xl border border-border p-4 text-sm">
-          <h3 className="font-extrabold">1. Thưởng theo model</h3>
+          <h3 className="font-semibold">1. Thưởng theo model</h3>
           <ul className="mt-2 space-y-1 text-muted-foreground">
             <li>
               Tổng thưởng model:{" "}
@@ -156,7 +156,7 @@ function BonusPage() {
           </ul>
         </div>
         <div className="rounded-2xl border border-border p-4 text-sm">
-          <h3 className="font-extrabold">2. Thưởng doanh số (Target)</h3>
+          <h3 className="font-semibold">2. Thưởng doanh số (Target)</h3>
           <ul className="mt-2 space-y-1 text-muted-foreground">
             <li>
               Target: <strong className="text-foreground">{formatVnd(kpiSep.target)}</strong> · đạt{" "}
@@ -173,7 +173,7 @@ function BonusPage() {
           </ul>
         </div>
         <div className="rounded-2xl border border-brand bg-brand/5 p-4 text-sm">
-          <h3 className="font-extrabold">3. Tổng thưởng</h3>
+          <h3 className="font-semibold">3. Tổng thưởng</h3>
           <ul className="mt-2 space-y-1 text-muted-foreground">
             <li>
               Model + doanh số:{" "}
@@ -265,7 +265,7 @@ function BonusPage() {
       <div className="mt-8 grid gap-6 lg:grid-cols-[1.4fr_1fr]">
         <section>
           <div className="flex flex-wrap items-center justify-between gap-3">
-            <h2 className="text-xl font-extrabold">Nhập số lượng bán</h2>
+            <h2 className="text-xl font-semibold">Nhập số lượng bán</h2>
             <input
               value={search}
               onChange={(e) => setSearch(e.target.value)}
@@ -321,7 +321,7 @@ function BonusPage() {
 
         <aside className="space-y-4">
           <div className="rounded-2xl border border-border p-4">
-            <h3 className="font-extrabold">Thưởng doanh số theo % hoàn thành</h3>
+            <h3 className="font-semibold">Thưởng doanh số theo % hoàn thành</h3>
             <p className="mt-1 text-xs text-muted-foreground">
               Target {formatVnd(kpiSep.target)} · Thưởng chuẩn {formatVnd(kpiSep.baseIncentive)} ×
               hệ số
@@ -347,7 +347,7 @@ function BonusPage() {
           </div>
 
           <div className="rounded-2xl border border-border p-4 text-sm">
-            <h3 className="font-extrabold">Thưởng xếp hạng Best PC</h3>
+            <h3 className="font-semibold">Thưởng xếp hạng Best PC</h3>
             <ul className="mt-3 space-y-1 text-muted-foreground">
               {kpiSep.rankBonus.map((r) => (
                 <li key={r.rank}>
@@ -361,7 +361,7 @@ function BonusPage() {
           </div>
 
           <div className="rounded-2xl border border-border p-4 text-sm">
-            <h3 className="font-extrabold">Trần thưởng tháng</h3>
+            <h3 className="font-semibold">Trần thưởng tháng</h3>
             <ul className="mt-3 space-y-1 text-muted-foreground">
               <li>
                 Thưởng doanh số (Target) — trần:{" "}
@@ -415,7 +415,7 @@ function Stat({
       <div className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
         {label}
       </div>
-      <div className={`mt-1 text-lg font-black ${highlight ? "text-brand" : ""}`}>{value}</div>
+      <div className={`mt-1 text-lg font-bold ${highlight ? "text-brand" : ""}`}>{value}</div>
       {hint && <div className="mt-1 text-xs text-muted-foreground">{hint}</div>}
     </div>
   );

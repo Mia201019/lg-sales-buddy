@@ -19,7 +19,7 @@ export function Section({
         : "border-border bg-card";
   return (
     <section className={`rounded-2xl border p-5 sm:p-6 ${toneClass}`}>
-      <h2 className="text-lg font-extrabold tracking-tight">{title}</h2>
+      <h2 className="text-lg font-semibold tracking-tight">{title}</h2>
       {subtitle && <p className="mt-1 text-sm text-muted-foreground">{subtitle}</p>}
       <div className="mt-4">{children}</div>
     </section>

@@ -59,7 +59,7 @@ function ModelPage() {
           <span className="rounded-full bg-accent px-3 py-1 text-xs font-bold text-accent-foreground">
             {category?.icon} {category?.name}
           </span>
-          <h1 className="mt-3 text-3xl font-black tracking-tight">
+          <h1 className="mt-3 text-3xl font-bold tracking-tight">
             {model.name ?? "Chưa có tên sản phẩm"}
           </h1>
           <p className="mt-1 text-sm font-bold uppercase tracking-widest text-brand">{model.code}</p>
@@ -74,7 +74,7 @@ function ModelPage() {
 
           <div className="mt-5 rounded-2xl border border-brand/30 bg-brand-soft p-4">
             <p className="text-xs font-bold uppercase tracking-widest text-brand">Giá thuê bao</p>
-            <p className="mt-1 text-2xl font-black">
+            <p className="mt-1 text-2xl font-bold">
               {formatVnd(price?.monthly ?? null) ?? "Chưa có thông tin"}
               {price?.monthly ? <span className="text-base font-semibold"> / tháng</span> : null}
             </p>
@@ -250,7 +250,7 @@ function ModelPage() {
         <Section title="Khuyến mãi & Quà tặng" tone="highlight">
           {promo?.title || promo?.giftName ? (
             <div className="grid gap-2">
-              <p className="text-xl font-black">🎁 {promo.title ?? "Ưu đãi đặc biệt"}</p>
+              <p className="text-xl font-bold">🎁 {promo.title ?? "Ưu đãi đặc biệt"}</p>
               <p className="font-bold">{promo.giftName ?? "Chưa có thông tin quà tặng"}</p>
               <p className="text-sm">
                 Giá trị quà: {formatVnd(promo.giftValue ?? null) ?? "Chưa có thông tin"}
@@ -321,7 +321,7 @@ function PriceBox({ label, value }: { label: string; value: string | null }) {
       <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
         {label}
       </p>
-      <p className="mt-0.5 text-base font-black">{value ?? "Chưa có thông tin"}</p>
+      <p className="mt-0.5 text-base font-bold">{value ?? "Chưa có thông tin"}</p>
     </div>
   );
 }
@@ -329,7 +329,7 @@ function PriceBox({ label, value }: { label: string; value: string | null }) {
 function QuickItem({ n, label, value }: { n: number; label: string; value: string | null }) {
   return (
     <div className="rounded-xl border border-border bg-card p-3">
-      <span className="grid h-6 w-6 place-items-center rounded-full bg-brand text-xs font-black text-brand-foreground">
+      <span className="grid h-6 w-6 place-items-center rounded-full bg-brand text-xs font-bold text-brand-foreground">
         {n}
       </span>
       <p className="mt-2 text-xs font-semibold uppercase tracking-widest text-muted-foreground">

@@ -41,7 +41,7 @@ function ProductsPage() {
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-10">
-      <h1 className="text-3xl font-black tracking-tight">Sản phẩm theo model</h1>
+      <h1 className="text-3xl font-bold tracking-tight">Sản phẩm theo model</h1>
       <p className="mt-2 text-sm text-muted-foreground">
         Mỗi model có trang đào tạo riêng: ATA, kịch bản tư vấn, giá và quà tặng.
       </p>

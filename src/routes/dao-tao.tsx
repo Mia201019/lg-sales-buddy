@@ -47,7 +47,7 @@ const closings = [
 function TrainingPage() {
   return (
     <div className="mx-auto max-w-6xl px-4 py-10">
-      <h1 className="text-3xl font-black tracking-tight">Đào tạo Sales</h1>
+      <h1 className="text-3xl font-bold tracking-tight">Đào tạo Sales</h1>
       <p className="mt-2 text-sm text-muted-foreground">
         Kiến thức nền tảng áp dụng cho mọi model. Kịch bản riêng từng model nằm trong trang chi tiết
         sản phẩm.
@@ -58,7 +58,7 @@ function TrainingPage() {
           <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {steps.map((s) => (
               <div key={s.n} className="rounded-xl border border-border bg-card p-4">
-                <span className="grid h-7 w-7 place-items-center rounded-full bg-brand text-xs font-black text-brand-foreground">
+                <span className="grid h-7 w-7 place-items-center rounded-full bg-brand text-xs font-bold text-brand-foreground">
                   {s.n}
                 </span>
                 <p className="mt-2 font-bold">{s.title}</p>

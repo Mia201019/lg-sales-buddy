@@ -91,7 +91,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
         rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800;900&display=swap",
+        href: "https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700&family=Inter:wght@400;500;600&display=swap",
       },
       {
         rel: "stylesheet",
@@ -131,9 +131,21 @@ function RootComponent() {
           {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
           <Outlet />
         </main>
-        <footer className="border-t border-border px-4 py-6 text-center text-xs text-muted-foreground">
-          Tài liệu đào tạo nội bộ · LG Subscribe · Ảnh sản phẩm sử dụng nguồn chính thức từ LG
-          Vietnam
+        <footer className="bg-ink text-[14.5px] text-[#c9c9cc]">
+          <div className="mx-auto flex max-w-[1180px] flex-wrap items-center justify-between gap-6 px-5 pb-8 pt-14 sm:px-8">
+            <img
+              src={`${import.meta.env.BASE_URL}lg-subscribe-logo.png`}
+              alt="LG Subscribe"
+              className="h-7 w-auto brightness-0 invert"
+            />
+            <p className="text-sm text-[#a9a9ad]">Customer care: 18001503</p>
+          </div>
+          <div className="mx-auto max-w-[1180px] px-5 sm:px-8">
+            <p className="border-t border-[#2c2c2e] py-[22px] text-center text-[13px] text-[#7c7c80]">
+              Tài liệu đào tạo nội bộ · LG Subscribe · Ảnh sản phẩm sử dụng nguồn chính thức từ LG
+              Vietnam
+            </p>
+          </div>
         </footer>
       </div>
     </QueryClientProvider>

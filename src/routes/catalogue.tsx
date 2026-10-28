@@ -83,7 +83,7 @@ const mb = (bytes: number) => `${(bytes / 1024 / 1024).toFixed(1)} MB`;
 function CataloguePage() {
   return (
     <div className="mx-auto max-w-6xl px-4 py-8">
-      <h1 className="text-3xl font-black tracking-tight">Thư viện Catalogue</h1>
+      <h1 className="text-3xl font-bold tracking-tight">Thư viện Catalogue</h1>
       <p className="mt-2 max-w-2xl text-sm text-muted-foreground">
         Tài liệu chính hãng LG dùng khi tư vấn tại quầy. Nhân viên có thể xem trực tiếp hoặc tải
         file PDF về máy để dùng khi không có mạng.
@@ -99,7 +99,7 @@ function CataloguePage() {
             <span className="mt-2 w-fit rounded-full bg-accent px-3 py-1 text-xs font-bold text-accent-foreground">
               {it.category}
             </span>
-            <h2 className="mt-2 text-lg font-black leading-tight">{it.name}</h2>
+            <h2 className="mt-2 text-lg font-bold leading-tight">{it.name}</h2>
             <p className="mt-1 flex-1 text-sm text-muted-foreground">{it.desc}</p>
             <p className="mt-3 text-xs font-semibold uppercase tracking-widest text-muted-foreground">
               PDF · {mb(it.asset.size)}

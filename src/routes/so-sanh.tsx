@@ -49,7 +49,7 @@ function ComparePage() {
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-10">
-      <h1 className="text-3xl font-black tracking-tight">So sánh model</h1>
+      <h1 className="text-3xl font-bold tracking-tight">So sánh model</h1>
       <p className="mt-2 text-sm text-muted-foreground">
         Chọn tối đa 3 model trong cùng danh mục để đề xuất nhanh cho khách.
       </p>
@@ -100,7 +100,7 @@ function ComparePage() {
               <tr className="bg-surface text-left">
                 <th className="p-3 font-bold">Tiêu chí</th>
                 {selected.map((m) => (
-                  <th key={m.code} className="p-3 font-black text-brand">
+                  <th key={m.code} className="p-3 font-bold text-brand">
                     {m.code}
                   </th>
                 ))}

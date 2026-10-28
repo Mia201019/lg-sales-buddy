@@ -52,7 +52,7 @@ function PricePage() {
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-10">
-      <h1 className="text-3xl font-black tracking-tight">Giá, quà tặng & voucher</h1>
+      <h1 className="text-3xl font-bold tracking-tight">Giá, quà tặng & voucher</h1>
       <p className="mt-2 text-sm text-muted-foreground">
         Nguồn: Danh sách giá Kiosk MB tháng 8 · Khuyến mãi trọn gói Tháng 8 + Tháng 9 · Voucher MB
         đến 30/9. Danh sách được sắp xếp theo danh mục sản phẩm, ưu tiên % khuyến mãi từ cao xuống
@@ -136,7 +136,7 @@ function PricePage() {
 
       <div className="mt-10 grid gap-6 lg:grid-cols-2">
         <section className="rounded-2xl border border-border p-5">
-          <h2 className="text-xl font-extrabold">Voucher cho khách hàng cá nhân (app MB)</h2>
+          <h2 className="text-xl font-semibold">Voucher cho khách hàng cá nhân (app MB)</h2>
           <ul className="mt-4 space-y-3 text-sm">
             {customerVouchers.map((v) => (
               <li key={v.reward} className="flex items-center justify-between gap-3 rounded-xl bg-surface px-4 py-3">
@@ -153,7 +153,7 @@ function PricePage() {
         </section>
 
         <section className="rounded-2xl border border-border p-5">
-          <h2 className="text-xl font-extrabold">Voucher 2.000.000đ cho nhân viên MB Bank</h2>
+          <h2 className="text-xl font-semibold">Voucher 2.000.000đ cho nhân viên MB Bank</h2>
           <p className="mt-1 text-sm text-muted-foreground">
             Áp dụng cho {mbRows.length} model dưới đây, đến hết 30/9.
           </p>
