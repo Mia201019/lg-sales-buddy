@@ -6,11 +6,11 @@ import { priceRows, customerVouchers, voucherNotes } from "@/data/catalog";
 export const Route = createFileRoute("/gia-khuyen-mai")({
   head: () => ({
     meta: [
-      { title: "Bảng giá, quà tặng & voucher tháng 8 | LG Kiosk MB" },
+      { title: "Bảng giá Subscription 1/10 – 31/12/2026 | LG Kiosk MB" },
       {
         name: "description",
         content:
-          "Bảng giá Kiosk MB tháng 8: giá niêm yết, One Time + Care, trả góp 12/24/36 tháng, quà tặng bundle và voucher MB.",
+          "Chính sách giá Subscription từ 1/10 đến 31/12/2026: giá niêm yết, One Time + Care, trả góp 12/24/36 tháng, quà tặng bundle và voucher MB.",
       },
       { property: "og:title", content: "Bảng giá, quà tặng & voucher LG Kiosk MB" },
       {
@@ -54,7 +54,7 @@ function PricePage() {
     <div className="mx-auto max-w-6xl px-4 py-10">
       <h1 className="text-3xl font-bold tracking-tight">Giá, quà tặng & voucher</h1>
       <p className="mt-2 text-sm text-muted-foreground">
-        Nguồn: Danh sách giá Kiosk MB tháng 8 · Khuyến mãi trọn gói Tháng 8 + Tháng 9 · Voucher MB
+        Nguồn: Chính sách giá Subscription áp dụng từ 1/10 đến hết 31/12/2026 · Khuyến mãi trọn gói Tháng 8 + Tháng 9 · Voucher MB
         đến 30/9. Danh sách được sắp xếp theo danh mục sản phẩm, ưu tiên % khuyến mãi từ cao xuống
         thấp.
       </p>
@@ -104,6 +104,7 @@ function PricePage() {
                   <div className="text-xs text-muted-foreground">
                     {r.group} · {r.type}
                   </div>
+                  {r.note ? <div className="text-xs font-semibold text-brand">{r.note}</div> : null}
                 </td>
                 <td className="p-3 text-xs">{catLabel(r.category)}</td>
                 <td className="p-3">{formatVnd(r.mrp) ?? "—"}</td>

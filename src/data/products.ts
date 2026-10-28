@@ -125,6 +125,11 @@ const typeLabels: Record<string, string> = {
   "F/L": "Máy giặt lồng ngang",
   "T/L": "Máy giặt lồng đứng",
   WashTower: "Tháp giặt sấy WashTower",
+  MWO: "Lò vi sóng",
+  Soundbar: "Loa Soundbar",
+  xboom: "Loa xboom",
+  Monitor: "Màn hình",
+  FHD: "TV FHD",
 };
 
 const screenSize = (code: string) => {
@@ -135,6 +140,9 @@ const screenSize = (code: string) => {
 /** Model có ảnh trong public/products/<MODEL>.webp */
 const productImages = new Set([
   "100QNED86BS",
+  "27LX6TDGA",
+  "32LX6BDGA",
+  "32U889SA-W",
   "43NU855BPSA",
   "43QNED80BSA",
   "50NU855BPSA",
@@ -192,6 +200,10 @@ const productImages = new Set([
   "LSI63BLMA",
   "MD16GQSE0",
   "MD19GQGE0",
+  "MS2032GAS",
+  "MS2032GIK",
+  "MS2535GIK",
+  "MS3032JAS",
   "OLED55B6PSA",
   "OLED55C6PSA",
   "OLED55G6PSA",
@@ -203,10 +215,15 @@ const productImages = new Set([
   "OLED77G6PSA",
   "OLED83C6PSA",
   "OLED83W6PSA",
+  "S95AR",
+  "SG10TY",
+  "STAGE301",
+  "STAGE501",
   "T21BG",
   "T26BG",
   "T30SV",
   "T33SV",
+  "W60GLGG0",
 ]);
 
 const productImageUrl = (code: string) =>
@@ -244,9 +261,14 @@ export const models: Model[] = priceRows.map((row) => {
       extendedWarranty: null,
       total: row.oneTime,
       note:
-        row.discount != null
-          ? `Giá One Time + Care ưu đãi ${row.discount}% so với giá niêm yết.`
-          : null,
+        [
+          row.discount != null
+            ? `Giá One Time + Care ưu đãi ${row.discount}% so với giá niêm yết.`
+            : null,
+          row.note ?? null,
+        ]
+          .filter(Boolean)
+          .join(" ") || null,
     },
     promotion: row.gift
       ? {
