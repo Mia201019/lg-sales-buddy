@@ -7,6 +7,8 @@ export const getRouter = () => {
 
   const router = createRouter({
     routeTree,
+    // "/" locally / on Lovable, "/<repo>" on GitHub Pages
+    basepath: import.meta.env.BASE_URL.replace(/\/$/, "") || "/",
     context: { queryClient },
     scrollRestoration: true,
     defaultPreloadStaleTime: 0,
